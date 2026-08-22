@@ -1,10 +1,10 @@
 # battleships
 
-How to ask your AI Agent to build a simple app from scratch.
+**How to ask your AI Agent to build a simple app from scratch**
 
-I start by asking AI to review my draft request and suggest improvements to give the AI Agent a better understanding of the requirements.
+I begin by asking the AI to review my draft request and suggest improvements so the Agent has a clearer understanding of the requirements.
 
-Here is the conversation.
+Below is the conversation. The results were mixed.
 
 #### Table of Contents
 * [My opening question](#my-opening-question)
@@ -15,6 +15,10 @@ Here is the conversation.
 * [AI's response, including further refinement](#ais-response-including-further-refinement)
 * [Me asking AI to for the final draft](#me-asking-ai-to-for-the-final-draft)
 * [AI providing the final consolidated version](#ai-providing-the-final-consolidated-version)
+* [The result](#the-result)
+  * [Prompt 1. Add missing projects to the solution and fix references to missing projects](#prompt-1-add-missing-projects-to-the-solution-and-fix-references-to-missing-projects)
+  * [Prompt 2. Make unit tests discoverable](#prompt-2-make-unit-tests-discoverable)
+  * [Prompt 3. Add start up routine user input logic to `Program.cs`](#prompt-3-add-start-up-routine-and-user-input-logic-to-programcs)
 
 # My opening question
 ```
@@ -1073,4 +1077,249 @@ When implementation is complete, provide a concise summary containing:
 
 If there are no known remaining issues, explicitly state that.
 
+```
+
+# The result
+
+After the agent ran the request in Visual Studio the result was incomplete.
+
+While the agent had created projects for the class library `Battleships.csproj` and test project `Battleships.Tests.csproj`, the solution `Battleships.slnx` only contained `Battleships.Console.csproj` and `Program.cs` was empty.
+
+I had to prompt the agent to complete the task.
+
+## Prompt 1. Add missing projects to the solution and fix references to missing projects
+```
+The solution `Battleships.slnx` doesnt contain `Battleships.csproj` or `Battleships.Tests.csproj`. It only contains `Battleships.Console.csproj`, which doesn't reference `Battleships.csproj`. Fix this.
+```
+
+Status after executing prompt 1
+•	Console project now references the library; tests reference the library.
+•	Build and tests previously run successfully after these project-level changes.
+•	Solution file still needs to include the Battleships and Battleships.Tests projects...
+
+The agent conceded:
+> I could not safely update the existing src/Battleships.slnx file in-place (file write/update failed in the environment)...
+
+I added the missing projects manually.
+
+## Prompt 2. Make unit tests discoverable
+```
+I have added `Battleships.Tests.csproj` to the solution but the unit tests are not discoverable. Fix this.
+```
+
+The agent failed to identify and fix the problem. I had to manually upgrade the nuget test packages for the tests to run. 
+
+## Prompt 3. Add start up routine and user input logic to `Program.cs`
+```
+Program.cs is empty but it is responsible for:
+- Loads the input file.
+- Handles user input.
+- Handles console output.
+
+Only make the necessary changes to Program.cs. Do not change any other file.
+
+Here is a reminder of the requirements for the Battleships Application, for which most of the logic has already bee created in the solution.
+
+The application loads the positions of ships from a CSV file and allows the player to enter coordinates to fire at the ships until all ships have been sunk or the player exits the game.
+
+Board
+
+The board is 10 × 10.
+
+Columns are:
+
+A, B, C, D, E, F, G, H, I, J
+
+Rows are:
+
+1 through 10
+
+Coordinates are written as Column followed by Row.
+
+Examples:
+
+A1
+B3
+J10
+
+Coordinate letters must be treated case-insensitively. For example, i5 and I5 represent the same coordinate.
+
+Coordinates outside columns A-J or rows 1-10 are invalid.
+
+Ships
+
+The only valid ship classes and their required sizes are:
+
+Carrier = 5
+Battleship = 4
+Cruiser = 3
+Submarine = 3
+Destroyer = 2
+
+Each of these ships must appear exactly once in a valid input file.
+
+A ship must:
+
+Occupy exactly the number of cells specified by its size.
+Be positioned horizontally or vertically.
+Occupy contiguous cells without gaps.
+Remain entirely within the 10 × 10 board.
+Not overlap another ship.
+
+Ships cannot be positioned diagonally.
+
+The order of coordinates within a ship's CSV entry should not affect whether an otherwise valid ship is accepted.
+
+Input File
+
+At application startup, Battleships.Console must load a CSV file named:
+
+Battleships.csv
+
+The file must be loaded from the same directory as the executable.
+
+Each non-empty line represents one ship.
+
+The format is:
+
+ShipClass,Coordinate1,Coordinate2,...
+
+For example:
+
+Carrier,C2,D2,E2,F2,G2
+
+Trim surrounding whitespace from individual CSV values.
+
+Treat ship class names and coordinate column letters case-insensitively.
+
+Startup Validation
+
+Validate the complete input file before starting the game.
+
+The application must detect at least the following invalid conditions.
+
+Unknown Ship
+
+If the file contains a ship class that is not recognised, output:
+
+Ships not recognised
+
+The game must not start.
+
+Missing or Duplicate Ship
+
+Each of the five required ship classes must occur exactly once.
+
+If a required ship is missing or a ship class occurs more than once, treat the fleet as invalid and output:
+
+Ships not recognised
+
+The game must not start.
+
+Incorrect Ship Size
+
+If a ship contains more or fewer coordinates than its required size, output:
+
+Incorrect ship size
+
+The game must not start.
+
+Invalid Coordinate
+
+If a ship contains a malformed coordinate or a coordinate outside the board, output:
+
+Invalid coordinate
+
+The game must not start.
+
+Invalid Ship Position
+
+If a ship's coordinates are not all on one horizontal or vertical line, output:
+
+Ships cannot sit diagonally on the board
+
+The game must not start.
+
+If a ship is horizontal or vertical but its cells are not contiguous, treat this as invalid ship positioning and output the same message:
+
+Ships cannot sit diagonally on the board
+
+The game must not start.
+
+Overlapping Ships
+
+If two or more ships occupy the same coordinate, output:
+
+Ships cannot overlap
+
+The game must not start.
+
+Multiple Errors
+
+If the file contains more than one validation error, reporting the first error encountered is sufficient.
+
+Do not start the game after any startup validation error.
+
+Valid Configuration
+
+If the file is valid, output:
+
+Battleships Begin
+
+The game can then start accepting player input.
+
+Player Input
+
+While the game is running, accept board coordinates such as:
+
+A1
+B3
+J10
+
+Coordinate input must be case-insensitive.
+
+If a coordinate is malformed or outside the board, output:
+
+Invalid coordinate
+
+The player must then be allowed to try again.
+
+If the player enters a coordinate that has already been entered, output:
+
+Cannot enter same coordinate twice
+
+The player must then be allowed to try again.
+
+A repeated coordinate must not cause any additional hit to be recorded against a ship.
+
+If the user presses the Escape key, immediately end the game.
+
+Escape must not be treated as coordinate input.
+
+Shot Results
+
+For each new valid coordinate entered by the player:
+
+If no ship occupies the coordinate, output:
+Miss
+If a ship occupies the coordinate and that ship still has one or more un-hit cells remaining after the shot, output:
+Hit
+If the shot hits the final un-hit cell belonging to that ship, output:
+Sunk
+
+Each coordinate can only be successfully fired upon once.
+
+When every coordinate belonging to every ship has been hit, output:
+
+Game Over
+
+The application must then end the game.
+
+If the final shot both sinks the final remaining ship and completes the game, output:
+
+Sunk
+
+followed by:
+
+Game Over
 ```
