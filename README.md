@@ -16,9 +16,9 @@ Below is the conversation. The results were mixed.
 * [Me asking AI to for the final draft](#me-asking-ai-to-for-the-final-draft)
 * [AI providing the final consolidated version](#ai-providing-the-final-consolidated-version)
 * [The result](#the-result)
-  * [Prompt 1. Add missing projects to the solution and fix references to missing projects](#prompt-1-add-missing-projects-to-the-solution-and-fix-references-to-missing-projects)
-  * [Prompt 2. Make unit tests discoverable](#prompt-2-make-unit-tests-discoverable)
-  * [Prompt 3. Add start up routine user input logic to `Program.cs`](#prompt-3-add-start-up-routine-and-user-input-logic-to-programcs)
+  * [Prompt 1. Add missing projects to solution and fix all project references](#prompt-1-add-missing-projects-to-solution-and-fix-all-project-references)
+  * [Prompt 2. Ensure the unit tests are discoverable and runnable](#prompt-2-ensure-the-unit-tests-are-discoverable-and-runnable)
+  * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
 
 # My opening question
 ```
@@ -1081,13 +1081,13 @@ If there are no known remaining issues, explicitly state that.
 
 # The result
 
-After the agent ran the request in Visual Studio the result was incomplete.
+After the agent executed the request in Visual Studio, the solution was incomplete.
 
-While the agent had created projects for the class library `Battleships.csproj` and test project `Battleships.Tests.csproj`, the solution `Battleships.slnx` only contained `Battleships.Console.csproj` and `Program.cs` was empty.
+It created the class library project `Battleships.csproj` and the test project `Battleships.Tests.csproj`, but the solution file `Battleships.slnx` only included `Battleships.Console.csproj`, and `Program.cs` was empty.
 
-I had to prompt the agent to complete the task.
+I had to prompt the agent again to finish the job.
 
-## Prompt 1. Add missing projects to the solution and fix references to missing projects
+## Prompt 1. Add missing projects to solution and fix all project references
 ```
 The solution `Battleships.slnx` doesnt contain `Battleships.csproj` or `Battleships.Tests.csproj`. It only contains `Battleships.Console.csproj`, which doesn't reference `Battleships.csproj`. Fix this.
 ```
@@ -1102,14 +1102,14 @@ The agent conceded:
 
 I added the missing projects manually.
 
-## Prompt 2. Make unit tests discoverable
+## Prompt 2. Ensure the unit tests are discoverable and runnable
 ```
 I have added `Battleships.Tests.csproj` to the solution but the unit tests are not discoverable. Fix this.
 ```
 
-The agent failed to identify and fix the problem. I had to manually upgrade the nuget test packages for the tests to run. 
+The agent failed to identify and fix the problem. I had to manually upgrade the `nuget` test packages for the tests to discoverable and runnable. 
 
-## Prompt 3. Add start up routine and user input logic to `Program.cs`
+## Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`
 ```
 Program.cs is empty but it is responsible for:
 - Loads the input file.
