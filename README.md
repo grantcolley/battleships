@@ -19,6 +19,7 @@ Below is the conversation. The results were mixed.
   * [Prompt 1. Add missing projects to solution and fix all project references](#prompt-1-add-missing-projects-to-solution-and-fix-all-project-references)
   * [Prompt 2. Ensure the unit tests are discoverable and runnable](#prompt-2-ensure-the-unit-tests-are-discoverable-and-runnable)
   * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
+* [Finally](#finally)
 
 # My opening question
 ```
@@ -1093,14 +1094,14 @@ The solution `Battleships.slnx` doesnt contain `Battleships.csproj` or `Battlesh
 ```
 
 Status after executing prompt 1
-•	Console project now references the library; tests reference the library.
-•	Build and tests previously run successfully after these project-level changes.
-•	Solution file still needs to include the Battleships and Battleships.Tests projects...
+- Console project now references the library; tests reference the library.
+- Build and tests previously run successfully after these project-level changes.
+- Solution file still needs to include the `Battleships` and `Battleships.Tests` projects...
 
 The agent conceded:
-> I could not safely update the existing src/Battleships.slnx file in-place (file write/update failed in the environment)...
+> I could not safely update the existing `src/Battleships.slnx` file in-place (file write/update failed in the environment)...
 
-I added the missing projects manually.
+I added the missing `Battleships` and `Battleships.Tests` projects to the solution manually.
 
 ## Prompt 2. Ensure the unit tests are discoverable and runnable
 ```
@@ -1323,3 +1324,14 @@ followed by:
 
 Game Over
 ```
+
+# Finally
+The solution builds.
+\
+Unit tests are discoverable, runnable, and passing.
+\
+The game runs as expected, including:
+- Load the input file at startup
+- Handle user-input and console output during the game
+- Exit the game if user hits `esc`
+- Complete the game when all ships are sunk
