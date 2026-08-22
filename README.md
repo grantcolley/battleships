@@ -15,7 +15,7 @@ Below is the conversation. The results were mixed.
 * [AI's response, including further refinement](#ais-response-including-further-refinement)
 * [Me asking AI to for the final draft](#me-asking-ai-to-for-the-final-draft)
 * [AI providing the final consolidated version](#ai-providing-the-final-consolidated-version)
-* [The result](#the-result)
+* [The result is incomplete](#the-result-is-incomplete)
   * [Prompt 1. Add missing projects to solution and fix all project references](#prompt-1-add-missing-projects-to-solution-and-fix-all-project-references)
   * [Prompt 2. Ensure the unit tests are discoverable and runnable](#prompt-2-ensure-the-unit-tests-are-discoverable-and-runnable)
   * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
@@ -1080,7 +1080,7 @@ If there are no known remaining issues, explicitly state that.
 
 ```
 
-# The result
+# The result is incomplete
 
 After the agent executed the request in Visual Studio, the solution was incomplete.
 
