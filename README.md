@@ -521,7 +521,8 @@ So yes: I'd treat the longer prompt from my previous answer as essentially an ag
 
 # My next question about asking AI to follow best practice
 ```
-Is it necessary to specify the Agent should follow best practice such as S.O.L.I.D and to consider algorithmic efficiency such as Big‑O?
+Is it necessary to specify the Agent should follow best practice such
+as S.O.L.I.D and to consider algorithmic efficiency such as Big‑O?
 ```
 
 # AI's response, including further refinement
@@ -578,7 +579,12 @@ That gives the agent much better guidance than simply saying “use SOLID and Bi
 
 # Me asking AI to for the final draft
 ```
-Provide a final request with your recommendations, including the short instruction right at the top, the section on engineering quality, and instruction on code quality. Also give it permission to make reasonable implementation decisions without repeatedly asking you questions.
+Provide a final request with your recommendations,
+including the short instruction right at the top,
+the section on engineering quality, and instruction on code quality.
+
+Also give it permission to make reasonable implementation
+decisions without repeatedly asking you questions.
 ```
 
 # AI providing the final consolidated version
