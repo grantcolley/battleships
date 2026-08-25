@@ -7,7 +7,7 @@ I begin by asking the AI to review my draft request and suggest improvements so 
 Below is the conversation. The results were mixed.
 
 #### Table of Contents
-* [My opening question](#my-opening-question)
+* [My opening question - help me help you](#my-opening-question)
 * [AI's response, including first draft](#ais-response-including-first-draft)
 * [My follow up question about formatting](#my-follow-up-question-about-formatting)
 * [AI's summarised answer, including improvements to its initial response](#ais-summarised-answer-including-improvements-to-its-initial-response)
