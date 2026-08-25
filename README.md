@@ -19,7 +19,7 @@ Below is the conversation. The results were mixed.
   * [Prompt 1. Add missing projects to solution and fix all project references](#prompt-1-add-missing-projects-to-solution-and-fix-all-project-references)
   * [Prompt 2. Ensure the unit tests are discoverable and runnable](#prompt-2-ensure-the-unit-tests-are-discoverable-and-runnable)
   * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
-  * [Finally](#finally)
+  * [Finally up and running](#finally-up-and-running)
 
 # My opening question
 ```
@@ -1325,7 +1325,7 @@ followed by:
 Game Over
 ```
 
-### Finally
+### Finally up and running
 The solution builds.
 \
 Unit tests are discoverable, runnable, and passing.
