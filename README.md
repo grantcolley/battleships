@@ -1,6 +1,6 @@
 # battleships
 
-**How to ask your AI Agent to build a simple app from scratch**
+**Asking an AI Agent to build a simple app from scratch**
 
 I begin by asking the AI to review my draft request and suggest improvements so the Agent has a clearer understanding of the requirements.
 
