@@ -15,7 +15,7 @@ Below is the conversation. The results were mixed.
 * [AI's response, including further refinement](#ais-response-including-further-refinement)
 * [Me asking AI to for the final draft](#me-asking-ai-to-for-the-final-draft)
 * [AI providing the final consolidated version](#ai-providing-the-final-consolidated-version)
-* [The result is incomplete](#the-result-is-incomplete)
+* [The results were mixed](#the-results-were-mixed)
   * [Prompt 1. Add missing projects to solution and fix all project references](#prompt-1-add-missing-projects-to-solution-and-fix-all-project-references)
   * [Prompt 2. Ensure the unit tests are discoverable and runnable](#prompt-2-ensure-the-unit-tests-are-discoverable-and-runnable)
   * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
@@ -1080,13 +1080,17 @@ If there are no known remaining issues, explicitly state that.
 
 ```
 
-# The result is incomplete
+# The results were mixed
 
 After the agent executed the request in Visual Studio, the solution was incomplete.
 
-It created the class library project `Battleships.csproj` and the test project `Battleships.Tests.csproj`, but the solution file `Battleships.slnx` only included `Battleships.Console.csproj`, and `Program.cs` was empty.
+It created the class library project `Battleships.csproj` and the test project `Battleships.Tests.csproj`, which appeared reasonable.
 
-I had to prompt the agent again to finish the job.
+The `Battleships.slnx` solution file, however, only included `Battleships.Console.csproj`. 
+
+Most surprising the `Program.cs` was empty which meant AI failed to create any of the startup routine necessary for the game to begin.
+
+I had to prompt the agent further to finish the job.
 
 ## Prompt 1. Add missing projects to solution and fix all project references
 ```
@@ -1101,16 +1105,23 @@ Status after executing prompt 1
 The agent conceded:
 > I could not safely update the existing `src/Battleships.slnx` file in-place (file write/update failed in the environment)...
 
-I added the missing `Battleships` and `Battleships.Tests` projects to the solution manually.
+Fair enough. So I added the missing `Battleships` and `Battleships.Tests` projects to the solution manually to move things along.
 
 ## Prompt 2. Ensure the unit tests are discoverable and runnable
 ```
 I have added `Battleships.Tests.csproj` to the solution but the unit tests are not discoverable. Fix this.
 ```
 
-The agent failed to identify and fix the problem. I had to manually upgrade the `nuget` test packages for the tests to discoverable and runnable. 
+The agent failed to identify and fix the problem. There was a fair bit of back and forth between me and the agent. Despite trying to get it to understand what was wrong, it seemed to be running in circles here. 
+
+In the end I had to manually upgrade the `nuget` test packages for the tests to discoverable and runnable. 
 
 ## Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`
+
+> [!NOTE]
+>
+> At this point the solution is compiling, and the tests are discoverable and runnable. Now all that is left is to get the agent to finish the job in `Program.cs` without breaking anything else! Given its ability to get things wrong I want to be explicit with my expectations.
+
 ```
 Program.cs is empty but it is responsible for:
 - Loads the input file.
