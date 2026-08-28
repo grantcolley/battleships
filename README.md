@@ -1,5 +1,9 @@
 # battleships
 
+> [!NOTE]
+>
+> This project is a small experiment where I asked an AI to whip up a simple board game in Visual Studio. The idea was to see how much instruction and prompting it actually needed to take the app from the very first request all the way to a running, working build.
+
 **Asking an AI Agent to build a simple app from scratch**
 
 I begin by asking the AI to review my draft request and suggest improvements so the Agent has a clearer understanding of the requirements.
