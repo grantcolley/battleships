@@ -7,7 +7,7 @@ I begin by asking the AI to review my draft request and suggest improvements so 
 Below is the conversation. The results were mixed.
 
 #### Table of Contents
-* [My opening question - help me help you](#my-opening-question---help-me-help-you)
+* [My opening question - help me help you help me](#my-opening-question---help-me-help-you-help-me)
 * [AI's response, including first draft](#ais-response-including-first-draft)
 * [My follow up question about formatting](#my-follow-up-question-about-formatting)
 * [AI's summarised answer, including improvements to its initial response](#ais-summarised-answer-including-improvements-to-its-initial-response)
@@ -21,7 +21,7 @@ Below is the conversation. The results were mixed.
   * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
   * [Finally up and running](#finally-up-and-running)
 
-# My opening question - help me help you
+# My opening question - help me help you help me
 ```
 I want to ask the agent in my Visual Studio IDE to build a C# app from an empty solution. I simply want to know what is the best way to structure my request.
  
