@@ -24,7 +24,8 @@ Below is the conversation. The results were mixed.
   * [Prompt 2. Ensure the unit tests are discoverable and runnable](#prompt-2-ensure-the-unit-tests-are-discoverable-and-runnable)
   * [Prompt 3. Add startup routine and user‑input handling logic to `Program.cs`](#prompt-3-add-startup-routine-and-userinput-handling-logic-to-programcs)
   * [Finally up and running](#finally-up-and-running)
-
+* [Next Steps](#next-steps)
+  
 # My opening shot - help me help you help me
 ```
 I want to ask the agent in my Visual Studio IDE to build a C# app from an empty solution. I simply want to know what is the best way to structure my request.
@@ -1354,11 +1355,11 @@ The game runs as expected, including:
 - Exit the game if user hits `esc`
 - Complete the game when all ships are sunk
 
+# Next Steps
 > [!IMPORTANT]
 >
 > *TODO: Code review!*
 >
-> *The application is running and the tests are passing but...*
-> 
-> - *is the code correct, efficient, extendable, and maintainable?*
-> - *are the tests sensible, and what is their coverage?*
+> *The game runs but... is the code correct, efficient, extendable, and maintainable?*
+>
+> *The tests are passing but... are they sensible, and what is the coverage?*
