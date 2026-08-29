@@ -1098,7 +1098,9 @@ I had to prompt the agent further to finish the job.
 
 ## Prompt 1. Add missing projects to solution and fix all project references
 ```
-The solution `Battleships.slnx` doesnt contain `Battleships.csproj` or `Battleships.Tests.csproj`. It only contains `Battleships.Console.csproj`, which doesn't reference `Battleships.csproj`. Fix this.
+The solution `Battleships.slnx` doesnt contain `Battleships.csproj` or `Battleships.Tests.csproj`.
+It only contains `Battleships.Console.csproj`, which doesn't reference `Battleships.csproj`.
+Fix this.
 ```
 
 Status after executing prompt 1
@@ -1113,7 +1115,8 @@ Fair enough. So I added the missing `Battleships` and `Battleships.Tests` projec
 
 ## Prompt 2. Ensure the unit tests are discoverable and runnable
 ```
-I have added `Battleships.Tests.csproj` to the solution but the unit tests are not discoverable. Fix this.
+I have added `Battleships.Tests.csproj` to the solution
+but the unit tests are not discoverable. Fix this.
 ```
 
 The agent failed to identify and fix the problem. There was a fair bit of back and forth between me and the agent. Despite trying to get it to understand what was wrong, it seemed to be running in circles here. 
@@ -1350,3 +1353,9 @@ The game runs as expected, including:
 - Handle user-input and console output during the game
 - Exit the game if user hits `esc`
 - Complete the game when all ships are sunk
+
+> [!IMPORTANT]
+>
+> *TODO: Code review!*
+>
+> *The application is running and the tests are passing but is the code correct, efficient, and maintainable, and are the tests sensible, and what is their coverage?*
