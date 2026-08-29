@@ -1358,4 +1358,7 @@ The game runs as expected, including:
 >
 > *TODO: Code review!*
 >
-> *The application is running and the tests are passing but is the code correct, efficient, and maintainable, and are the tests sensible, and what is their coverage?*
+> *The application is running and the tests are passing but...*
+> 
+> - *is the code correct, efficient, extendable, and maintainable?*
+> - *are the tests sensible, and what is their coverage?*
