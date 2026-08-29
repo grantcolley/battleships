@@ -1350,7 +1350,7 @@ Unit tests are discoverable, runnable, and passing.
 \
 The game runs as expected, including:
 - Load the input file at startup
-- Handle user-input and console output during the game
+- Handle user-input and console output as specified
 - Exit the game if user hits `esc`
 - Complete the game when all ships are sunk
 
